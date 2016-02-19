@@ -5,6 +5,7 @@
 
 html, body {
     height: 100%;
+    background-image: url(https://lh3.googleusercontent.com/-RBU04k1Yauk/AAAAAAAAAAI/AAAAAAAABK0/Aq1ZoAqRsAE/s500-c-no/photo.jpg);
     /* The html and body elements cannot have any padding or margin. */
 }
 

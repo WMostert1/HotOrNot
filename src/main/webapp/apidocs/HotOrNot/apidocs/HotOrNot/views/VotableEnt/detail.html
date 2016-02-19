@@ -1,0 +1,43 @@
+<header ng-switch on="$location.path().indexOf('/VotableEnts/new') > -1">
+    <h3 ng-switch-when="true">Create a new VotableEnt</h3>
+    <h3 ng-switch-when="false">View or edit VotableEnt</h3>
+</header>
+<form id="VotableEntForm" name="VotableEntForm" class="form-horizontal" role="form">
+    
+
+    <div class="form-group" ng-class="{'has-error': VotableEntForm.imageURL.$invalid}">
+        <label for="imageURL" class="col-sm-2 control-label">Image URL</label>
+        <div id="imageURLControls" class="col-sm-10">
+            <input id="imageURL" name="imageURL" type="text" required class="form-control" ng-model="votableEnt.imageURL" placeholder="Enter the VotableEnt Image URL"></input>
+            <span class="help-block error" ng-show="VotableEntForm.imageURL.$error.required">required</span> 
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': VotableEntForm.hotOrNot.$invalid}">
+        <label for="hotOrNot" class="col-sm-2 control-label">Hot Or Not</label>
+        <div id="hotOrNotControls" class="col-sm-10">
+            <input id="hotOrNot" name="hotOrNot" type="number" required class="form-control" ng-model="votableEnt.hotOrNot" placeholder="Enter the VotableEnt Hot Or Not"></input>
+            <span class="help-block error" ng-show="VotableEntForm.hotOrNot.$error.required">required</span> 
+            <span class="help-block error" ng-show="VotableEntForm.hotOrNot.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': VotableEntForm.entityType.$invalid}">
+        <label for="entityType" class="col-sm-2 control-label">Entity Type</label>
+        <div id="entityTypeControls" class="col-sm-10">
+        <select id="entityType" name="entityType" class="form-control" ng-model="votableEnt.entityType" ng-options="e for e in entityTypeList" required >
+            <option value="">Choose a Entity Type</option>
+        </select>
+        <span class="help-block error" ng-show="VotableEntForm.entityType.$error.required">required</span> 
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveVotableEnt" name="saveVotableEnt" class="btn btn-primary" ng-disabled="isClean() || VotableEntForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteVotableEnt" name="deleteVotableEnt" class="btn btn-danger" ng-show="votableEnt.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>
