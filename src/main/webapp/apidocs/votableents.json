@@ -1,0 +1,110 @@
+{
+  "apiVersion" : "1",
+  "swaggerVersion" : "1.2",
+  "basePath" : "/HotOrNot/rest",
+  "resourcePath" : "/votableents",
+  "apis" : [ {
+    "path" : "/votableents",
+    "operations" : [ {
+      "method" : "POST",
+      "nickname" : "create",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "HotOrNot-model-VotableEnt",
+        "paramType" : "body",
+        "name" : "entity",
+        "required" : true
+      } ],
+      "consumes" : [ "application/json" ]
+    }, {
+      "method" : "GET",
+      "nickname" : "listAll",
+      "type" : "array",
+      "items" : {
+        "$ref" : "HotOrNot-model-VotableEnt"
+      },
+      "parameters" : [ {
+        "type" : "integer",
+        "format" : "int32",
+        "paramType" : "query",
+        "name" : "start"
+      }, {
+        "type" : "integer",
+        "format" : "int32",
+        "paramType" : "query",
+        "name" : "max"
+      } ],
+      "produces" : [ "application/json" ]
+    } ]
+  }, {
+    "path" : "/votableents/{id}",
+    "operations" : [ {
+      "method" : "DELETE",
+      "nickname" : "deleteById",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "path",
+        "name" : "id",
+        "required" : true
+      } ]
+    }, {
+      "method" : "GET",
+      "nickname" : "findById",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "path",
+        "name" : "id",
+        "required" : true
+      } ],
+      "produces" : [ "application/json" ]
+    }, {
+      "method" : "PUT",
+      "nickname" : "update",
+      "type" : "Response",
+      "parameters" : [ {
+        "type" : "integer",
+        "format" : "int64",
+        "paramType" : "path",
+        "name" : "id",
+        "required" : true
+      }, {
+        "type" : "HotOrNot-model-VotableEnt",
+        "paramType" : "body",
+        "name" : "entity",
+        "required" : true
+      } ],
+      "consumes" : [ "application/json" ]
+    } ]
+  } ],
+  "models" : {
+    "HotOrNot-model-VotableEnt" : {
+      "id" : "HotOrNot-model-VotableEnt",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "version" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "imageURL" : {
+          "type" : "string"
+        },
+        "hotOrNot" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "entityType" : {
+          "type" : "string",
+          "enum" : [ "CELEB", "VEHICLE" ]
+        }
+      },
+      "required" : [ "imageURL", "hotOrNot", "entityType" ]
+    }
+  }
+}

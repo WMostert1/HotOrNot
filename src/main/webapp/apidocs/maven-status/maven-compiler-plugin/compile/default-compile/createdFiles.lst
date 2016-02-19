@@ -1,0 +1,4 @@
+org\HotOrNot\model\VotableEnt.class
+org\HotOrNot\model\EntityType.class
+org\HotOrNot\rest\RestApplication.class
+org\HotOrNot\rest\VotableEntEndpoint.class
