@@ -7,6 +7,7 @@ angular.module('hotOrNot',['ngRoute','ngResource'])
       .when('/VotableEnts',{templateUrl:'views/VotableEnt/search.html',controller:'SearchVotableEntController'})
       .when('/VotableEnts/new',{templateUrl:'views/VotableEnt/detail.html',controller:'NewVotableEntController'})
       .when('/VotableEnts/edit/:VotableEntId',{templateUrl:'views/VotableEnt/detail.html',controller:'EditVotableEntController'})
+      .when('/VotableEnts/rate/:VotableId',{templateUrl:'views/VotableEnt/voter.html',controller:'EditVotableEntController'}) 
       .otherwise({
         redirectTo: '/'
       });
