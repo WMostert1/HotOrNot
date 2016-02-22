@@ -35,6 +35,27 @@ angular.module('hotOrNot').controller('EditVotableEntController', function($scop
         };
         $scope.votableEnt.$update(successCallback, errorCallback);
     };
+    
+    $scope.save = function(hot) {
+        if(hot){
+    		$scope.votableEnt.vote = Math.floor((Math.random() * 5) + 5);
+    	} else {
+    		$scope.votableEnt.vote = Math.floor((Math.random() * 5) + 1);
+    	}
+    	
+        var successCallback = function(){
+            flash.setMessage({'type':'success','text':'The votableEnt was updated successfully.'}, true);
+            $scope.get();
+        };
+        var errorCallback = function(response) {
+            if(response && response.data && response.data.message) {
+                flash.setMessage({'type': 'error', 'text': response.data.message}, true);
+            } else {
+                flash.setMessage({'type': 'error', 'text': 'Something broke. Retry, or cancel and start afresh.'}, true);
+            }
+        };
+        $scope.votableEnt.$update(successCallback, errorCallback);
+    };
 
     $scope.cancel = function() {
         $location.path("/VotableEnts");
