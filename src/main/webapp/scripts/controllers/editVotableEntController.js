@@ -36,7 +36,7 @@ angular.module('hotOrNot').controller('EditVotableEntController', function($scop
         $scope.votableEnt.$update(successCallback, errorCallback);
     };
     
-    $scope.save = function(hot) {
+    $scope.rate = function(hot) {
         if(hot){
     		$scope.votableEnt.hotOrNot = Math.floor((Math.random() * 5) + 5);
     	} else {
